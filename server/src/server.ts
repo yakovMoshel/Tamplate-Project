@@ -1,8 +1,10 @@
 import express, { NextFunction, Request, Response } from 'express';
+import cryptoRoutes from './routes/cryptoRoutes';
 
 const app = express();
 app.use(express.json());
 
+app.use(cryptoRoutes);
 
 app.use((err : Error, req : Request, res : Response, next : NextFunction) => {
     res.status(500).json({massage : 'Something went wrong!', error: err.message })
