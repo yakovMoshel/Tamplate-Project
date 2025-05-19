@@ -10,12 +10,21 @@ const fetchCryptos = async () => {
     return res.json();
 };
 exports.fetchCryptos = fetchCryptos;
-const fetchCryptoById = async (id) => {
-    const url = `https://api.coingecko.com/api/v3/coins/${id}`;
-    const res = await fetch(url);
-    if (!res.ok) {
-        throw new Error(`Failed to fetch crypto by ID ${id}: ${res.status}`);
+const fetchCryptoById = async (id, days = 7) => {
+    const detailUrl = `https://api.coingecko.com/api/v3/coins/${id}`;
+    const historyUrl = `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${days}`;
+    const [detailRes, historyRes] = await Promise.all([
+        fetch(detailUrl),
+        fetch(historyUrl)
+    ]);
+    if (!detailRes.ok || !historyRes.ok) {
+        throw new Error("Failed to fetch data");
     }
-    return res.json();
+    const detail = await detailRes.json();
+    const history = await historyRes.json();
+    return {
+        detail,
+        history: history.prices
+    };
 };
 exports.fetchCryptoById = fetchCryptoById;

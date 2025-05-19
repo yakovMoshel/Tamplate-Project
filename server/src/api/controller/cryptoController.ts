@@ -12,12 +12,13 @@ export const getCryptos = async (req: Request, res: Response) => {
 };
 
 export const getCryptoDetails = async (req: Request, res: Response) => {
+   const { id } = req.params;
+  const days = req.query.days || 7;
+
   try {
-    const id = req.params.id;
-    const data = await fetchCryptoById(id);
-    res.json(data);
+    const data = await fetchCryptoById(id, Number(days));
+    res.json(data); 
   } catch (err) {
-    console.error('Error in getCryptoDetails:', err);
-    res.status(500).json({ message: 'Error fetching crypto detail' });
+    res.status(500).json({ error: 'Failed to fetch full crypto data' });
   }
 };
