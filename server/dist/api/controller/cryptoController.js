@@ -4,7 +4,7 @@ exports.getCryptoDetails = exports.getCryptos = void 0;
 const crypto_Service_1 = require("../services/crypto.Service");
 const getCryptos = async (req, res) => {
     try {
-        const data = await (0, crypto_Service_1.fetchCryptos)();
+        const data = await (0, crypto_Service_1.fetchAndStoreCryptos)();
         res.json(data);
     }
     catch (err) {

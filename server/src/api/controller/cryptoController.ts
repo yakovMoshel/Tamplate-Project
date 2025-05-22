@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import {fetchCryptoById,fetchCryptos}  from '../services/crypto.Service';
+import {fetchAndStoreCryptos, fetchCryptoById}  from '../services/crypto.Service';
 
 export const getCryptos = async (req: Request, res: Response) => {
   try {
-    const data = await fetchCryptos();
+    const data = await fetchAndStoreCryptos();
     res.json(data);
   } catch (err) {
     console.error('Error in getCryptos:', err);
@@ -22,3 +22,4 @@ export const getCryptoDetails = async (req: Request, res: Response) => {
     res.status(500).json({ error: 'Failed to fetch full crypto data' });
   }
 };
+

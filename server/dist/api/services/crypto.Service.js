@@ -1,15 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.fetchCryptoById = exports.fetchCryptos = void 0;
-const fetchCryptos = async () => {
-    const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false';
-    const res = await fetch(url);
-    if (!res.ok) {
-        throw new Error(`Failed to fetch cryptocurrencies: ${res.status}`);
+exports.fetchCryptoById = exports.fetchAndStoreCryptos = void 0;
+const cryptoData_1 = require("../data/cryptoData");
+const cryptoSchema_1 = require("../models/cryptoSchema");
+const fetchAndStoreCryptos = async () => {
+    const existing = await cryptoSchema_1.cryptoSchema.find().lean(); // הופך למסמכים רגילים
+    if (existing.length > 0) {
+        return existing;
     }
-    return res.json();
+    const data = await (0, cryptoData_1.fetchCryptoData)();
+    await cryptoSchema_1.cryptoSchema.insertMany(data);
+    return data;
 };
-exports.fetchCryptos = fetchCryptos;
+exports.fetchAndStoreCryptos = fetchAndStoreCryptos;
 const fetchCryptoById = async (id, days = 7) => {
     const detailUrl = `https://api.coingecko.com/api/v3/coins/${id}`;
     const historyUrl = `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${days}`;

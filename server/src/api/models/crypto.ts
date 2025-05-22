@@ -1,5 +1,7 @@
+import mongoose from "mongoose";
+
 export interface Crypto {
-  id: string;
+  id: string;  
   symbol: string;
   name: string;
   image: string;
@@ -8,7 +10,19 @@ export interface Crypto {
   market_cap_rank: number;
   total_volume: number;
   price_change_percentage_24h: number;
+  high_24h: number;
+  low_24h: number;
 }
+export interface IWatchedCoin  {
+  id: string; // לדוגמה 'bitcoin'
+  name: string;
+  symbol: string;
+  image: string;
+  addedAt: Date;
+  current_price: number;
+}
+
+
 export interface CryptoMarketHistory {
   prices: [number, number][];
 }

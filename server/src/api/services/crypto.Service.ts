@@ -1,15 +1,19 @@
-import {Crypto,CryptoDetail, CryptoInfo, CryptoMarketHistory } from "../models/crypto"
-  const fetchCryptos = async () : Promise<Crypto[]> => {
-  const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false';
+import { fetchCryptoData } from "../data/cryptoData";
+import { Crypto, CryptoDetail, CryptoInfo, CryptoMarketHistory } from "../models/crypto"
+import { cryptoSchema } from '../models/cryptoSchema'
 
-  const res = await fetch(url);
-  if (!res.ok) {
-    throw new Error(`Failed to fetch cryptocurrencies: ${res.status}`);
+const fetchAndStoreCryptos = async (): Promise<Crypto[]> => {
+  const existing = await cryptoSchema.find().lean(); // הופך למסמכים רגילים
+
+  if (existing.length > 0) {
+    return existing ;
   }
 
-  return res.json();
-};
+  const data = await fetchCryptoData();
+  await cryptoSchema.insertMany(data);
 
+  return data;
+};
 const fetchCryptoById = async (id: string, days = 7): Promise<CryptoDetail> => {
   const detailUrl = `https://api.coingecko.com/api/v3/coins/${id}`;
   const historyUrl = `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${days}`;
@@ -32,4 +36,4 @@ const fetchCryptoById = async (id: string, days = 7): Promise<CryptoDetail> => {
   };
 };
 
-export { fetchCryptos, fetchCryptoById };
+export { fetchAndStoreCryptos, fetchCryptoById };
