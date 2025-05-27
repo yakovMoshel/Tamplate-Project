@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { Crypto } from "./crypto";
+import { Crypto } from "../types/Crypto";
 
 export const CryptoSchema = new mongoose.Schema({
   id: String,

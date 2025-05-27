@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
-import { IWatchedCoin } from './crypto';
-;
+import { IWatchedCoin } from '../types/IWatchedCoin';
+
 
 const WatchlistSchema = new Schema<IWatchedCoin>({
   id:

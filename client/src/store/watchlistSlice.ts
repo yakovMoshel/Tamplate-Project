@@ -1,23 +1,25 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
 import { Crypto } from "../domain/models/models";
+import api from "../utils/api";
 
 // הוספת מטבע לרשימת המעקב
 export const addCoinToWatchlist = createAsyncThunk(
-  "watchlist/addCoin",
+  'watchlist/addCoin',
   async (coinId: string) => {
-    const response = await axios.post("http://localhost:5000/api/watchlist/add",
-      { coinId });
+    const response = await api.post('/watchlist/add', { coinId });
     return response.data;
   }
 );
 
+
+
 // הסרת מטבע מרשימת המעקב
 export const removeCoinFromWatchlist = createAsyncThunk(
-  "watchlist/removeCoin",
+  'watchlist/removeCoin',
   async (coinId: string) => {
-    const response = await axios.delete('http://localhost:5000/api/watchlist/remove',
-      { data: { coinId } });
+    const response = await api.delete('/watchlist/remove', {
+      data: { coinId },
+    });
     return response.data;
   }
 );
