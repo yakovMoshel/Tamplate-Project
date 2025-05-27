@@ -14,7 +14,8 @@ const router = createBrowserRouter([{
     {
       path: '/',
       element: <HomePage />,
-      loader: cryptoDashboardLoader
+      loader: cryptoDashboardLoader,
+      shouldRevalidate: () => false,
     },
     {
       path: '/coin/:id',
@@ -25,7 +26,8 @@ const router = createBrowserRouter([{
     {
       path: '/watchlist',
       element: <WatchlistPage />,
-      loader : watchlistLoader
+      loader : watchlistLoader,
+      shouldRevalidate: () => false,
     }
   ]
 }

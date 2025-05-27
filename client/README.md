@@ -1,46 +1,131 @@
-# Getting Started with Create React App
+# 🧩 Crypto Dashboard (Client-Side)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the Frontend part of the Crypto Dashboard application, built with React, TypeScript, and Redux Toolkit. It provides a clean, responsive, and modular user interface for exploring and tracking cryptocurrencies in real-time, fully integrated with a secure and scalable backend (Node.js + MongoDB).
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Key Features
 
-### `npm start`
+✅ Interactive dashboard to browse and search cryptocurrencies
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+⭐ Add/remove coins to/from a personal watchlist
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+🔁 Sync with backend server via secure REST API
 
-### `npm test`
+⚡ Asynchronous state management with Redux Toolkit + Thunk
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+🔒 Fully typed with TypeScript and modular architecture
 
-### `npm run build`
+🎨 Responsive design using CSS Modules
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🛠️ Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+| Layer      | Technology              |
+| ---------- | ----------------------- |
+| Framework  | React + Vite            |
+| Language   | TypeScript              |
+| State Mgmt | Redux Toolkit           |
+| Routing    | React Router v6         |
+| HTTP       | Axios                   |
+| Styling    | CSS Modules             |
+| Dev Tools  | ESLint, Prettier, JSDoc |
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 📁 Folder Structure
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+src/
+│
+├── components/             # Reusable UI components
+│   ├── atoms/              # generic UI elements(input,labal,button)
+│   ├── molecules/          # Small UI elements (e.g., Header)
+│   |── organisms/          # Complex actions components (e.g., AddToWatchList)
+│   └── templates/          # layout componnets
+│
+├── domain/
+│   └── models/             # Global TypeScript interfacest
+│
+├── hooks/                  # redux hooks, control coins state, add & remove
+│    └── redux/
+│
+│
+├── navigation/             # responsive Nav Bar 
+│
+├── pages/                  # Main pages of the app
+│   ├── HomePage.tsx
+│   ├── WatchlistPage.tsx
+│   └── ErrorPage.tsx
+│
+│
+├── services/               # API communication logic
+│    ├── CryptoHistory.ts
+│    ├── cryptoServices.ts         
+│    └── WatchListServices.ts
+│
+├── store/                  # Redux slices and configuration
+│    ├── store
+│    └── watchlistSlice.ts
+│
+│
+│
+├── utils/                  # Helper functions & Axios instance 
+│   ├── loading.tsx 
+│   └── api.ts               
+│
+├── styles/                 # CSS modules
+│   └── *.module.css
+└──
+ │
+ ├── App.tsx                # Holds the router object, takes care of the loader  
+ │                            functions, holds the errorElement that handles all errors
+ └──                  
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 🔁 Data Flow
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+User action
+  ↓
+React component dispatches Redux thunk
+  ↓
+Thunk triggers API call via Axios
+  ↓
+Server responds with updated crypto data
+  ↓
+Redux slice updates global state
+  ↓
+React components re-render with new data
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🌐 API Integration
+All HTTP requests are handled via utils/api.ts using a centralized Axios instance.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+| Action           | Endpoint            | Method |
+| ---------------- | ------------------- | ------ |
+| Fetch watchlist  | `/watchlist`        | GET    |
+| Add coin to list | `/watchlist/add`    | POST   |
+| Remove coin      | `/watchlist/remove` | DELETE |
+
+---
+
+## ⚙️ Local Setup & Development
+
+# 1. Clone the repository
+git clone https://github.com/yakovMoshel/Crypto-dashborad.git
+cd client
+
+# 2. Install dependencies
+npm install
+
+# 3. Run the dev server
+npm run dev
+
+---
+
+## ✍️ Documentation
+All services, slices, and core components are documented with JSDoc
+
+100% fully typed using TypeScript
+

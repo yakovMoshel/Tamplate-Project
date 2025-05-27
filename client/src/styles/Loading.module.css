@@ -1,0 +1,92 @@
+.loader {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto ;
+  border: none;
+  padding: 2rem;
+  background-color: #fafafa;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.loader::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    110deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: gradient-animation_2 1.8s ease-in-out infinite;
+  z-index: 2;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+
+
+.textLines {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.line1,
+.line2,
+.line3,
+.line4,
+.line5,
+.line6,
+.line7 {
+  background-color: #cacaca;
+  height: 40px;
+  border-radius: 4px;
+}
+
+.line1 {
+  width: 55%;
+}
+
+.line2 {
+  width: 55%;
+}
+.line3 {
+  width: 55%;
+}
+.line4{
+  width: 55%;
+}
+.line5 {
+  width: 55%;
+}
+.line6 {
+  width: 55%;
+}
+.line7 {
+  width: 55%;
+}
+
+@keyframes gradient-animation_2 {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
