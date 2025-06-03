@@ -1,3 +1,8 @@
+/**
+ * This folder contains helper functions and utilities.
+ * Example: loading spinners, formatters, Axios instances, etc.
+ */
+
 import axios from 'axios';
 
 const api = axios.create({

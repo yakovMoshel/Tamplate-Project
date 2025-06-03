@@ -157,7 +157,6 @@ All HTTP requests are handled via utils/api.ts using a centralized Axios instanc
 
 # 1. Clone the repository
 git clone https://github.com/yakovMoshel/Crypto-dashborad.git
-cd client
 
 # 2. Install dependencies
 npm install
