@@ -1,4 +1,4 @@
-# 🚀 Full-Stack Template (React + Express + MongoDB)
+~~~ # 🚀 Full-Stack Template (React + Express + MongoDB)
 
 A ready-to-use full-stack template that includes a frontend built with React + TypeScript and a backend using Express + MongoDB + TypeScript.  
 Perfect for starting new projects with a clean folder structure, basic configuration, and production-ready features.
@@ -174,3 +174,4 @@ All services, slices, and core components are documented with JSDoc
 Yaakov Moshel — Full-Stack Developer passionate about building modern, scalable, and modular applications.
 
 📫 [LinkedIn](https://linkedin.com/in/yakov-moshel)
+~~~
