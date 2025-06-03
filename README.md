@@ -1,4 +1,5 @@
-~~~ # 🚀 Full-Stack Template (React + Express + MongoDB)
+~~~
+ # 🚀 Full-Stack Template (React + Express + MongoDB)
 
 A ready-to-use full-stack template that includes a frontend built with React + TypeScript and a backend using Express + MongoDB + TypeScript.  
 Perfect for starting new projects with a clean folder structure, basic configuration, and production-ready features.
@@ -40,7 +41,8 @@ Perfect for starting new projects with a clean folder structure, basic configura
 
 ## 📁 Project Folder Structure
 
-This template is designed to help you get started with a scalable full-stack project using **React + TypeScript** on the frontend, and **Express + MongoDB + TypeScript** on the backend.
+This template is designed to help you get started with a scalable full-stack project using **React + TypeScript** on the frontend,
+ and **Express + MongoDB + TypeScript** on the backend.
 
 ---
 
@@ -120,7 +122,11 @@ server/
 
 ## 🔁 Data Flow Overview
 
-This project uses a unidirectional data flow pattern, connecting **React**, **Redux Toolkit**, **Axios**, and the **Express backend** with clean separation of concerns.
+This project uses a unidirectional data flow pattern,
+ connecting **React**,
+ **Redux Toolkit**,
+ **Axios**,
+ and the **Express backend** with clean separation of concerns.
 
 ### 📊 Full Flow
 
