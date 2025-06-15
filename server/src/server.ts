@@ -5,6 +5,7 @@ import express from 'express';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import cors from 'cors';
+import authRoutes from './routes/auth';
 
 import { connectToMongoDB } from './api/utils/connectToMongo';
 import corsOptions from './configs/corsOptions';
@@ -21,6 +22,9 @@ app.use(express.json());
 
 app.use(notFound);
 app.use(errorHandler);
+
+// Import routes
+app.use('/auth', authRoutes);
 
 connectToMongoDB()
   .then(() => app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`)))
